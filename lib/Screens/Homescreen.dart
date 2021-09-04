@@ -7,7 +7,8 @@ class Homescreen extends StatefulWidget {
   _HomescreenState createState() => _HomescreenState();
 }
 
-class _HomescreenState extends State<Homescreen> with SingleTickerProviderStateMixin{
+class _HomescreenState extends State<Homescreen>
+    with SingleTickerProviderStateMixin {
   late TabController _controller; // This is to control the flow of the tabs.
   @override
   void initState() {
@@ -23,7 +24,32 @@ class _HomescreenState extends State<Homescreen> with SingleTickerProviderStateM
         title: Text("Whatsapp Clone"),
         actions: [
           IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.more_vert)),
+          PopupMenuButton<String>(onSelected: (value) {
+            print(value);
+          }, itemBuilder: (BuildContext context) {
+            return [
+              PopupMenuItem(
+                child: Text("New group"),
+                value: "New group",
+              ),
+              PopupMenuItem(
+                child: Text("New broadcast"),
+                value: "New broadcast",
+              ),
+              PopupMenuItem(
+                child: Text("Whatsapp web"),
+                value: "Whatsapp web",
+              ),
+              PopupMenuItem(
+                child: Text("Started messages"),
+                value: "Stared messages",
+              ),
+              PopupMenuItem(
+                child: Text("Settings"),
+                value: "Settings",
+              ),
+            ];
+          })
         ],
         bottom: TabBar(
           controller: _controller,
@@ -37,19 +63,17 @@ class _HomescreenState extends State<Homescreen> with SingleTickerProviderStateM
             Tab(
               text: "STATUS",
             ),
-            Tab(
-              text: "CALLS"
-            ),
+            Tab(text: "CALLS"),
           ],
         ),
       ),
       body: TabBarView(
         controller: _controller,
         children: [
-        Text("Camera"),
-        Text("Chats"),
-        Text("Status"),
-        Text("Calls"),
+          Text("Camera"),
+          Text("Chats"),
+          Text("Status"),
+          Text("Calls"),
         ],
       ),
     );
