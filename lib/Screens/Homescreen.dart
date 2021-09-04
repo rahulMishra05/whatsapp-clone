@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/Pages/ChatPage.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({Key? key}) : super(key: key);
@@ -53,6 +54,7 @@ class _HomescreenState extends State<Homescreen>
         ],
         bottom: TabBar(
           controller: _controller,
+          indicatorColor: Colors.white,
           tabs: [
             Tab(
               icon: Icon(Icons.camera_alt),
@@ -71,7 +73,7 @@ class _HomescreenState extends State<Homescreen>
         controller: _controller,
         children: [
           Text("Camera"),
-          Text("Chats"),
+          ChatPage(),
           Text("Status"),
           Text("Calls"),
         ],
